@@ -33,7 +33,7 @@ public class Comida {
 	@Column(name = "Nombre_Comida", nullable= false, length = 20)
 	private String nomComida; 
 	
-	@Column(name = "Precio", nullable =  false, scale = 2)
+	@Column(name = "Precio", nullable =  false, scale = 2, columnDefinition = "DECIMAL(10,2)")
 	private BigDecimal precio;
 	
 	@ManyToOne
