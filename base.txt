@@ -1,0 +1,15 @@
+DROP DATABASE IF EXISTS db_restaurante;
+CREATE DATABASE db_restaurante;
+use db_restaurante;
+
+INSERT INTO tb_categoria (Nombre_Categoria) VALUES ('Entradas'),
+('Platos Principales'),
+('Pastas'),
+('Ensaladas'),
+('Bebida caliente'),
+('Bebida fria'),G
+('Gaseosa'),
+('Agua mineral')
+;
+select * from tb_categoria;
+select * from tb_bebida;

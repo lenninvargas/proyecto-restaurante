@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Bebida</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Editar Bebida</h1>
+        <form th:action="@{/guardarEdicionBebida}" th:object="${bebida}" method="post">
+            <div class="mb-3">
+                <label for="idBebida" class="form-label">ID Bebida</label>
+                <input type="text" id="idBebida" th:field="*{idBebida}" class="form-control" readonly disabled>
+            </div>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nomBebida" th:field="*{nomBebida}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                <input type="number" id="precio" th:field="*{precio}" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="idCategoria" class="form-label">Categoría</label>
+                <select id="idCategoria" th:field="*{idCategoria}" class="form-control" required>
+                    <option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}" th:text="${categoria.nomCategoria}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <a href="/listarBebida" class="btn btn-secondary">Volver</a>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
