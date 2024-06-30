@@ -8,13 +8,15 @@
 <body>
     <div class="container">
         <h1 class="my-4">Editar Comida</h1>
-        <form th:action="@{/guardarEdicionComida}" th:object="${comida}" method="post">
+        <form th:action="@{/guardarEdicionComida}" th:object="${comida}" method="post" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{idComida}">
+            
             <div class="mb-3">
                 <label for="idComida" class="form-label">ID Comida</label>
                 <input type="text" id="idComida" th:field="*{idComida}" class="form-control" readonly disabled>
             </div>
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="nomComida" class="form-label">Nombre</label>
                 <input type="text" id="nomComida" th:field="*{nomComida}" class="form-control" required>
             </div>
             <div class="mb-3">
@@ -26,6 +28,16 @@
                 <select id="idCategoria" th:field="*{idCategoria}" class="form-control" required>
                     <option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}" th:text="${categoria.nomCategoria}"></option>
                 </select>
+            </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen Actual</label>
+                <div>
+                    <img th:src="@{'/comida_imagen/' + ${comida.urlImagen}}" style="max-width: 200px;"/>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="nuevaImagen" class="form-label">Nueva Imagen</label>
+                <input type="file" id="nuevaImagen" name="imagen" class="form-control" accept="image/*">
             </div>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             <a href="/listarComida" class="btn btn-secondary">Volver</a>

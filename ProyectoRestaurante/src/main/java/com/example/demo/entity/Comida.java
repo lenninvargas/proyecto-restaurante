@@ -39,4 +39,7 @@ public class Comida {
 	@ManyToOne
 	@JoinColumn(name = "Id_Categoria" , nullable = false)
 	private Categoria idCategoria;
+	
+	@Column(name = "Url_Imagen" , nullable = false)
+	private String urlImagen;
 }

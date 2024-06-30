@@ -4,16 +4,56 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .card-custom {
+            width: 350px;
+            margin: auto;
+            border-radius: 15px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+            transition: transform 0.2s;
+        } 
+        .card-custom:hover {
+            transform: scale(1.05);
+        }
+        .btn-custom {
+            display: block;
+            width: 100%;
+        }
+        .card-title {
+            text-align: center;
+        }
+        .card-img-top {
+            width: 100%;
+            height: 300px; 
+            object-fit: cover;
+            border-radius: 15px; 
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Mantenimiento comida y bebida</h1>
-        <div>
-            <a href="/listarBebida" class="btn btn-primary me-2">Mantenimiento Bebida</a>
-            <a href="/listarComida" class="btn btn-secondary">Mantenimiento Comida</a>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Mantenimiento</h1>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card card-custom">
+                    <img src="/crud_bebida_comida/bebida.jpg" class="card-img-top" alt="Imagen de bebida">
+                    <div class="card-body">
+                        <h5 class="card-title">Bebida</h5>
+                        <a href="/listarBebida" class="btn btn-primary btn-custom">Ir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card card-custom">
+                    <img src="/crud_bebida_comida/comida.jpg" class="card-img-top" alt="Imagen de comida">
+                    <div class="card-body">
+                        <h5 class="card-title">Comida</h5>
+                        <a href="/listarComida" class="btn btn-success btn-custom">Ir</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

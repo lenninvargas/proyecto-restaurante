@@ -8,13 +8,15 @@
 <body>
     <div class="container">
         <h1 class="my-4">Editar Bebida</h1>
-        <form th:action="@{/guardarEdicionBebida}" th:object="${bebida}" method="post">
+        <form th:action="@{/guardarEdicionBebida}" th:object="${bebida}" method="post" enctype="multipart/form-data">
+            <input type="hidden" th:field="*{idBebida}">
+            
             <div class="mb-3">
                 <label for="idBebida" class="form-label">ID Bebida</label>
                 <input type="text" id="idBebida" th:field="*{idBebida}" class="form-control" readonly disabled>
             </div>
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="nomBebida" class="form-label">Nombre</label>
                 <input type="text" id="nomBebida" th:field="*{nomBebida}" class="form-control" required>
             </div>
             <div class="mb-3">
@@ -27,8 +29,18 @@
                     <option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}" th:text="${categoria.nomCategoria}"></option>
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen Actual</label>
+                <div>
+					<img th:src="@{'/bebida_imagen/' + ${bebida.urlImagen}}" style="max-width: 200px;"/>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="nuevaImagen" class="form-label">Nueva Imagen</label>
+                <input type="file" id="nuevaImagen" name="imagen" class="form-control" accept="image/*">
+            </div>
             <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-            <a href="/listarBebida" class="btn btn-secondary">Volver</a>
+            <a th:href="@{/listarBebida}" class="btn btn-secondary">Volver</a>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

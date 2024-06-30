@@ -8,7 +8,7 @@
 <body>
     <div class="container mt-4">
         <h1>Registrar Nueva Comida</h1>
-        <form th:action="@{/registrarComida}" th:object="${comida}" method="post">
+        <form th:action="@{/registrarComida}" th:object="${comida}" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" id="nombre" name="nomComida" th:field="*{nomComida}" class="form-control" required>
@@ -17,15 +17,23 @@
                 <label for="precio" class="form-label">Precio</label>
                 <input type="number" id="precio" name="precio" th:field="*{precio}" class="form-control" required>
             </div>
-           <div class="form-group">
+            <div class="form-group">
                 <label for="categoria" class="form-label">Categoría</label>
                 <select id="categoria" name="idCategoria" class="form-select" th:field="*{idCategoria}" required>
                     <option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}" th:text="${categoria.nomCategoria}"></option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="file" id="imagen" name="imagen" class="form-control" required>
+            </div>
             <br>
             <a href="/listarComida" class="btn btn-secondary ms-2">Regresar</a>
             <button type="submit" class="btn btn-primary">Guardar</button>
+            <br>
+            <div th:if="${successMessage}" class="alert alert-success" role="alert">
+            	<span th:text="${successMessage}"></span>
+            </div>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
