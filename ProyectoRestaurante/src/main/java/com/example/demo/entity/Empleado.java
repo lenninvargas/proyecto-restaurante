@@ -40,6 +40,12 @@ public class Empleado {
 	@Column(name = "Telefono", nullable = false, length = 9, columnDefinition = "CHAR(9)")
 	private String telefono;
 	
+	@Column (name = "correo", nullable = false ,unique = true, length = 50)
+	private String correo;
+	
+	@Column (name = "password", nullable = false, length = 50)
+	private String contrasenia;
+	
 	@ManyToOne
 	@JoinColumn(name = "Id_TipoEmpleado" , nullable = false)
 	private TipoEmpleado Id_TipoEmpleado;
